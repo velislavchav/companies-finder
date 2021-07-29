@@ -5,7 +5,8 @@ import Management from "@/components/Management"
 import Highlights from "@/components/Highlights"
 import CompanyBasicInformation from "@/components/CompanyBasicInformation"
 import { companyRelations } from "@/requests"
-import { getCompanyHighlights, getCompanyBasicInformation, sortHighlights } from "@/requests/companyGeneral"
+import { getCompanyHighlights, getCompanyBasicInformation } from "@/requests/companyGeneral"
+import {sortHighlights} from "../../components/Highlights/utils/setHighlightsData"
 
 const useStyles = makeStyles((theme) => ({
   container: {
