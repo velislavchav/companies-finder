@@ -9,6 +9,7 @@ import { makeKeysToUI } from './utils/setHighlightsData';
 
 const useStyles = makeStyles((theme) => ({
     root: {
+        display: 'inline-block',
         width: '48.75%',
         marginTop: '75px',
         marginLeft: '2.5%',
@@ -31,16 +32,14 @@ const useStyles = makeStyles((theme) => ({
 const Highlights = ({ highlights }) => {
     const classes = useStyles();
     const [expanded, setExpanded] = React.useState(false);
-    const keys = Object.keys(highlights);
     const handleChange = (panel) => (event, isExpanded) => {
         setExpanded(isExpanded ? panel : false);
     };
 
     return (
         <div className={classes.root}>
-            {keys ?
-                keys.map((key, i) => {
-                    const insObj = highlights[key];
+            {highlights ?
+                highlights.map((insObj, i) => {
                     for (let [insKey, insValue] of Object.entries(insObj)) {
                         return (<Accordion key={i} expanded={expanded === `panel${i}`} onChange={handleChange(`panel${i}`)}>
                             <AccordionSummary
@@ -48,7 +47,7 @@ const Highlights = ({ highlights }) => {
                                 aria-controls={"panel" + i + "bh-content"}
                                 id={"panel" + i + "bh-header"}
                             >
-                                <Typography className={classes.heading}> {makeKeysToUI(key)} </Typography>
+                                <Typography className={classes.heading}> {makeKeysToUI(insObj.key)} </Typography>
                                 <Typography className={classes.secondaryHeading}>{insValue}</Typography>
                             </AccordionSummary>
                             <AccordionDetails>

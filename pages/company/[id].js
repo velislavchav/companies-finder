@@ -5,7 +5,7 @@ import Management from "@/components/Management"
 import Highlights from "@/components/Highlights"
 import CompanyBasicInformation from "@/components/CompanyBasicInformation"
 import { companyRelations } from "@/requests"
-import { getCompanyHighlights, getCompanyBasicInformation } from "@/requests/companyGeneral"
+import { getCompanyHighlights, getCompanyBasicInformation, sortHighlights } from "@/requests/companyGeneral"
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -33,7 +33,8 @@ export default function Company() {
           setRelations(res)
         })
         getCompanyHighlights(id).then(res => {
-          setHighlights(res)
+          const sortedHiglights = sortHighlights(res);
+          setHighlights(sortedHiglights)
         })
         getCompanyBasicInformation(id).then(res => {
           setBasicInformation(res)

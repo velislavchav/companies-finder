@@ -42,8 +42,6 @@ const Management = ({ relations }) => {
     ...boardOfDirectors,
   ]);
 
-  console.log(managementData)
-
   if (managementData && managementData.length > 0) {
     const keys = Object.keys(managementData[0])
     return (
@@ -60,7 +58,7 @@ const Management = ({ relations }) => {
             {managementData.map((data, i) => (
               <TableRow key={i}>
                 {keys.map((key, i) => (
-                  <TableCell align={i > 1 ? "right" : "left"}>{data[key]}</TableCell>
+                  <TableCell key={i} align={i > 1 ? "right" : "left"}>{data[key]}</TableCell>
                 ))}
               </TableRow>
             ))}

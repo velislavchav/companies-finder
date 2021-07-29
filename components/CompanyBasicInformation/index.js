@@ -10,6 +10,7 @@ import { getCorrectInformation } from './utils/setBasicData';
 
 const useStyles = makeStyles({
   table: {
+    display: 'inline-block',
     minWidth: 650,
     width: '48.75%',
     marginTop: '75px'
